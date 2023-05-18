@@ -1,0 +1,50 @@
+@import "src/styles/index";
+
+.toast {
+  &__type {
+    text-transform: capitalize;
+  }
+
+  &__close-button {
+    color: $color-gray-900;
+    margin-left: $spacing-s;
+  }
+
+  .MuiSnackbar-root {
+    bottom: 0;
+    margin-bottom: $spacing-8xl;
+  }
+
+  .MuiAlert-root {
+    box-sizing: border-box;
+    color: $color-gray-900;
+    padding: $spacing-3xs $spacing-s;
+    width: 36rem;
+  }
+
+  .MuiAlert-standardSuccess {
+    background-color: $color-green-100-2;
+  }
+
+  .MuiAlert-standardInfo {
+    background-color: $color-blue-100;
+  }
+
+  .MuiAlert-standardError {
+    background-color: $color-red-100;
+  }
+
+  .MuiAlert-standardWarning {
+    background-color: $color-yellow-100;
+  }
+
+  .MuiAlert-message {
+    align-items: center;
+    display: flex;
+    font-family: $font-family-main;
+    justify-content: space-between;
+    padding: 0;
+    white-space: pre-line;
+    width: 100%;
+  }
+}

@@ -1,0 +1,26 @@
+@import "src/styles/index";
+
+.progress-bar__background {
+  background-color: $color-gray-20;
+  border-radius: $border-radius-l;
+  height: 1.6rem;
+  width: 100%;
+
+  .progress-bar__bar {
+    background-color: $color-pink-700;
+    border-radius: $border-radius-l;
+    height: inherit;
+    position: relative;
+    transform-origin: left;
+  }
+}
+
+// @keyframes progress {
+//   from {
+//     width: 0;
+//   }
+
+//   to {
+//     width: 100%;
+//   }
+// }

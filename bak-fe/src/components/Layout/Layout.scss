@@ -1,0 +1,13 @@
+@import "src/styles/index";
+
+.layout {
+  background-color: $color-gray-10;
+  height: calc(100vh - $height-header);
+
+  &__main {
+    box-sizing: border-box;
+    height: 100%;
+    margin-top: $height-header;
+    padding-bottom: $spacing-4xl;
+  }
+}

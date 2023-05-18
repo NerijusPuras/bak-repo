@@ -1,0 +1,65 @@
+@import "variables";
+@import "colors";
+@import "fonts";
+
+:root {
+  --doc-height: 100%;
+}
+
+html {
+  font-size: $font-size-percentage;
+}
+
+body {
+  background-color: $color-gray-10;
+  color: $color-gray-900;
+  font-family: $font-family-main;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.content-wrapper-mobile {
+  box-sizing: border-box;
+  min-height: var(--doc-height);
+  padding: 0 $spacing-s;
+}
+
+.content-wrapper {
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: $max-width-desktop;
+}
+
+.content-wrapper-l {
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: $max-width-desktop-l;
+}
+
+.loading-page {
+  align-items: center;
+  background-color: $color-gray-10;
+  display: flex;
+  justify-content: center;
+}

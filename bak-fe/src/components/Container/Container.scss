@@ -1,0 +1,24 @@
+@import "src/styles/index";
+
+.container {
+  background: $color-white;
+  border: $border-default-s;
+  border-radius: $border-radius-l;
+
+  &--small {
+    padding: $spacing-3xl $spacing-xl;
+    text-align: center;
+  }
+
+  &--large {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: $max-width-desktop;
+    min-height: 0; // needed for the container to fit in the view but also match content height inside
+    padding: $spacing-xl;
+    width: 100%;
+  }
+}

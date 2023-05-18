@@ -1,0 +1,346 @@
+@import "src/styles/index";
+
+$padding-button-text: $spacing-2xs $spacing-xs;
+$padding-button-with-icon: $spacing-2xs $spacing-xl $spacing-2xs $spacing-s;
+$padding-button-text-with-icon: $spacing-2xs $spacing-s $spacing-2xs $spacing-xs;
+
+%button-shared-focus-outline {
+  &:active {
+    outline: $border-width-m solid $color-gray-900;
+    outline-offset: 0.2rem;
+  }
+}
+
+%button-shared {
+  background: transparent;
+  border: 0;
+}
+
+%button-filled-shared {
+  @extend %button-shared-focus-outline;
+
+  border: 0;
+  color: $color-white;
+
+  &:hover {
+    box-shadow: 0 0.1rem 0.2rem rgba($color-black, 30%),
+      0 0.1rem 0.3rem 0.1rem rgba($color-black, 15%);
+  }
+
+  &:active {
+    box-shadow: none;
+  }
+}
+
+%button-disabled-shared {
+  &:disabled {
+    color: $color-gray-700;
+  }
+}
+
+%button-outlined-shared {
+  &:active {
+    border-width: $border-width-m;
+  }
+}
+
+%button-outlined-disabled-shared {
+  &:disabled {
+    border: $border-width-s solid $color-gray-700;
+    color: $color-gray-700;
+  }
+}
+
+%button-primary-shared {
+  @extend %button-shared;
+  @extend %button-disabled-shared;
+  @extend %button-shared-focus-outline;
+
+  color: $color-violet-700;
+
+  &:hover,
+  &:active {
+    background: $color-blue-50;
+    color: $color-violet-900;
+  }
+}
+
+%button-primary-filled-shared {
+  @extend %button-filled-shared;
+
+  background: $color-violet-700;
+
+  &:hover,
+  &:active {
+    background: $color-violet-900;
+  }
+}
+
+%button-primary-outline-shared {
+  @extend %button-outlined-shared;
+  @extend %button-shared-focus-outline;
+  @extend %button-outlined-disabled-shared;
+
+  background: transparent;
+  border: $border-width-s solid $color-blue-700;
+  color: $color-blue-700;
+
+  &:hover,
+  &:active {
+    background: $color-blue-50;
+    border-color: $color-blue-900;
+    color: $color-blue-900;
+  }
+}
+
+%button-secondary-shared {
+  @extend %button-shared;
+  @extend %button-disabled-shared;
+  @extend %button-shared-focus-outline;
+
+  color: $color-plum-800;
+
+  &:hover,
+  &:active {
+    background: $color-plum-50;
+    color: $color-plum-900;
+  }
+}
+
+%button-secondary-filled-shared {
+  @extend %button-filled-shared;
+
+  background: $color-white;
+  color: $color-violet-700;
+  border: $border-width-m solid $color-violet-700;
+}
+
+%button-secondary-outline-shared {
+  @extend %button-outlined-shared;
+  @extend %button-shared-focus-outline;
+  @extend %button-outlined-disabled-shared;
+
+  background: transparent;
+  border: $border-width-s solid $color-plum-800;
+  color: $color-plum-800;
+
+  &:hover,
+  &:active {
+    background: $color-plum-50;
+    border-color: $color-plum-900;
+    color: $color-plum-900;
+  }
+}
+
+%button-danger-shared {
+  @extend %button-shared;
+  @extend %button-disabled-shared;
+  @extend %button-shared-focus-outline;
+
+  color: $color-red-700;
+
+  &:hover,
+  &:active {
+    background: $color-red-50;
+    color: $color-red-900;
+  }
+}
+
+%button-danger-filled-shared {
+  @extend %button-filled-shared;
+
+  background: $color-red-700;
+
+  &:hover:not(:active) {
+    background: $color-red-900;
+  }
+}
+
+%button-danger-outlined-shared {
+  @extend %button-outlined-shared;
+  @extend %button-shared-focus-outline;
+  @extend %button-outlined-disabled-shared;
+
+  background: transparent;
+  border: $border-width-s solid $color-red-700;
+  color: $color-red-700;
+
+  &:hover,
+  &:active {
+    background: $color-red-50;
+    border-color: $color-red-900;
+    color: $color-red-900;
+  }
+}
+
+.button {
+  align-items: center;
+  border-radius: $border-radius-rounded;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  font-family: $font-family-main;
+  gap: $spacing-3xs;
+  height: 4rem;
+  justify-content: center;
+  padding: $spacing-2xs $spacing-xl;
+  text-decoration: none;
+  transition: background 0.7s;
+
+  &:active {
+    transition: background 0s;
+  }
+
+  &:disabled {
+    cursor: auto;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &--icon {
+    @extend %button-shared;
+
+    padding: $spacing-4xs;
+  }
+
+  &--text-with-icon {
+    @extend %button-shared;
+
+    gap: $spacing-xs;
+    padding: 0;
+  }
+
+  &--primary {
+    &-icon {
+      @extend %button-primary-shared;
+
+      padding: $spacing-2xs;
+    }
+
+    &-icon-mono {
+      @extend %button-shared;
+      @extend %button-shared-focus-outline;
+
+      color: $color-gray-700;
+      padding: $spacing-2xs;
+
+      &:hover,
+      &:active {
+        background: $color-gray-20;
+        color: $color-gray-900;
+      }
+    }
+
+    &-text {
+      @extend %button-primary-shared;
+
+      padding: $padding-button-text;
+    }
+
+    &-text-with-icon {
+      @extend %button-primary-shared;
+
+      padding: $padding-button-text-with-icon;
+    }
+
+    &-filled {
+      @extend %button-primary-filled-shared;
+    }
+
+    &-filled-with-icon {
+      @extend %button-primary-filled-shared;
+
+      padding: $padding-button-with-icon;
+    }
+
+    &-outlined {
+      @extend %button-primary-outline-shared;
+    }
+
+    &-outlined-with-icon {
+      @extend %button-primary-outline-shared;
+
+      padding: $padding-button-with-icon;
+    }
+  }
+
+  &--secondary {
+    &-icon {
+      @extend %button-secondary-shared;
+
+      padding: $spacing-2xs;
+    }
+
+    &-text {
+      @extend %button-secondary-shared;
+
+      padding: $padding-button-text;
+    }
+
+    &-text-with-icon {
+      @extend %button-secondary-shared;
+
+      padding: $padding-button-text-with-icon;
+    }
+
+    &-filled {
+      @extend %button-secondary-filled-shared;
+    }
+
+    &-filled-with-icon {
+      @extend %button-secondary-filled-shared;
+
+      padding: $padding-button-with-icon;
+    }
+
+    &-outlined {
+      @extend %button-secondary-outline-shared;
+    }
+
+    &-outlined-with-icon {
+      @extend %button-secondary-outline-shared;
+
+      padding: $padding-button-with-icon;
+    }
+  }
+
+  &--danger {
+    &-icon {
+      @extend %button-danger-shared;
+
+      padding: $spacing-2xs;
+    }
+
+    &-text {
+      @extend %button-danger-shared;
+
+      padding: $padding-button-text;
+    }
+
+    &-text-with-icon {
+      @extend %button-danger-shared;
+
+      padding: $padding-button-text-with-icon;
+    }
+
+    &-filled {
+      @extend %button-danger-filled-shared;
+    }
+
+    &-filled-with-icon {
+      @extend %button-danger-filled-shared;
+
+      padding: $padding-button-with-icon;
+    }
+
+    &-outlined {
+      @extend %button-danger-outlined-shared;
+    }
+
+    &-outlined-with-icon {
+      @extend %button-danger-outlined-shared;
+
+      padding: $padding-button-with-icon;
+    }
+  }
+}

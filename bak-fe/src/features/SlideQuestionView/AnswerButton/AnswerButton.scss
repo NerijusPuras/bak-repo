@@ -1,0 +1,69 @@
+@import "src/styles/index";
+
+.answer-button {
+  @include answer-variants;
+
+  align-items: center;
+  border-radius: $border-radius-m;
+  border-style: solid;
+  border-width: $border-width-m;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  min-height: 14rem;
+  width: 100%;
+  font-family: $font-family-mono;
+
+  &__text {
+    color: $color-gray-900;
+    flex-grow: 1;
+    justify-content: flex-start;
+    padding: 2.4rem $spacing-s;
+    word-break: break-word;
+    text-align: center;
+  }
+
+  &--circle {
+    background: $color-violet-300;
+    border-color: $color-violet-700;
+
+    &-selected {
+      background: $color-violet-700;
+      color: $color-black;
+    }
+  }
+
+  &--triangle {
+    background: $color-azure-300;
+    border-color: $color-azure-700;
+
+    &-selected {
+      background: $color-azure-700;
+      color: $color-black;
+    }
+  }
+
+  &--square {
+    background: $color-pink-300;
+    border-color: $color-pink-700;
+
+    &-selected {
+      background: $color-pink-700;
+      color: $color-black;
+    }
+  }
+
+  &--star {
+    background: $color-orange-300;
+    border-color: $color-orange-700;
+
+    &-selected {
+      background: $color-orange-700;
+      color: $color-black;
+    }
+  }
+
+  &--disabled {
+    opacity: 0.5;
+  }
+}

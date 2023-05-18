@@ -1,0 +1,48 @@
+@import "src/styles/index";
+
+.lecture-page {
+  &__modal-icon {
+    color: $color-red-700;
+  }
+
+  &__modal-actions {
+    display: flex;
+    gap: $spacing-3xs;
+  }
+
+  &__title-wrapper {
+    @include presenter-question-title-wrapper;
+  }
+
+  &__heading-and-actions {
+    @include page-heading-and-actions;
+  }
+
+  &__content-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xl;
+    // justify-content: space-between;
+    padding-top: $spacing-4xl;
+    width: 80%;
+  }
+  &__leaderboard-title {
+    align-items: left;
+    display: flex;
+    justify-content: space-between;
+    padding: $spacing-xl 0;
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: $max-width-desktop;
+  }
+
+  &__progress-bar {
+    align-items: center;
+    bottom: 3.6rem;
+    left: 50%;
+    position: fixed;
+    transform: translate(-50%, 0);
+    width: 80%;
+  }
+}

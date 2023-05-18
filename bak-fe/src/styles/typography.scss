@@ -1,0 +1,96 @@
+@import "variables";
+
+.display1 {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-semi-bold;
+  line-height: $line-height-3xl;
+}
+
+.display2 {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-semi-bold;
+  line-height: $line-height-2xl;
+}
+
+h1,
+.heading1 {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semi-bold;
+  line-height: $line-height-xl;
+}
+
+h2,
+.heading2 {
+  font-size: $font-size-l;
+  font-weight: $font-weight-semi-bold;
+  line-height: $line-height-l;
+}
+
+h3,
+.heading3 {
+  font-size: $font-size-m;
+  font-weight: $font-weight-semi-bold;
+  line-height: $line-height-m;
+}
+
+h4,
+.heading4 {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semi-bold;
+  line-height: $line-height-s;
+}
+
+.paragraph1-regular,
+.link1-regular {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-xs;
+}
+
+.paragraph1-bold,
+.link1-bold {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semi-bold;
+  line-height: $line-height-xs;
+  word-break: break-word;
+}
+
+.paragraph2-regular,
+.link2-regular {
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-2xs;
+  word-break: break-word;
+}
+
+.paragraph2-bold,
+.link2-bold {
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-semi-bold;
+  line-height: $line-height-2xs;
+}
+
+a,
+button {
+  font-size: $font-size-2xs;
+  font-weight: $font-weight-semi-bold;
+  line-height: $line-height-2xs;
+}
+
+.chip {
+  font-size: $font-size-3xs;
+  font-weight: $font-weight-semi-bold;
+  line-height: $line-height-3xs;
+}
+
+.caption {
+  font-size: $font-size-3xs;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-3xs;
+}
+
+.code {
+  font-family: $font-family-mono;
+  font-size: $font-size-xs;
+  line-height: $line-height-xs;
+}

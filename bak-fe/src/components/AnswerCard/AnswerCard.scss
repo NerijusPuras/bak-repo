@@ -1,0 +1,52 @@
+@import "src/styles/index";
+
+.answer-card {
+  @include answer-variants;
+
+  align-items: center;
+  border-radius: $border-radius-m;
+  border-style: solid;
+  border-width: $border-width-m;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  min-height: 14rem;
+  width: 100%;
+
+  // &__icon-wrapper {
+  //   @include answer-icon;
+
+  //   padding: 0 $spacing-xl;
+  // }
+
+  &__text {
+    color: $color-gray-900;
+    flex-grow: 1;
+    justify-content: flex-start;
+    padding: 2.4rem $spacing-s;
+    word-break: break-word;
+    text-align: center;
+
+    &--correct {
+      color: $color-white;
+    }
+  }
+
+  &__result-wrapper {
+    align-items: center;
+    background: $color-white;
+    border-radius: 0 $border-radius-m $border-radius-m 0;
+    display: flex;
+    height: 100%;
+    min-width: 2.5rem;
+    padding: 0 $spacing-xl;
+
+    &--filler {
+      background: transparent;
+    }
+  }
+
+  &__result-icon {
+    @include answer-result-icon;
+  }
+}

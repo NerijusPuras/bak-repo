@@ -1,0 +1,41 @@
+@import "src/styles/index";
+
+.knowledge-sharing-page {
+  display: flex;
+  height: $height-page-with-toolbar-content;
+  justify-content: center;
+
+  &__content-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xl;
+    // justify-content: space-between;
+    padding-top: $spacing-4xl;
+    width: 80%;
+  }
+
+  &__title-wrapper {
+    @include presenter-question-title-wrapper;
+  }
+
+  &__title {
+    text-align: center;
+  }
+
+  &__action-buttons {
+    display: flex;
+  }
+
+  &__input {
+    width: 80%;
+    height: 40%;
+    border-radius: 5px;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  &__action-buttons button {
+    margin: 5px;
+  }
+}

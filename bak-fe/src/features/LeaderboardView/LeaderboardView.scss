@@ -1,0 +1,13 @@
+@import "src/styles/index";
+
+.leaderboard-view {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4xl;
+  padding: calc(6rem + $height-toolbar) 0 11.2rem;
+
+  &__bottom-text {
+    padding-top: $spacing-xl;
+  }
+}

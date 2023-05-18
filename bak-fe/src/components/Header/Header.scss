@@ -1,0 +1,29 @@
+@import "src/styles/index";
+
+.header {
+  background-color: $color-white;
+  box-shadow: 0 0.4rem 0.4rem rgba($color-black, 15%);
+  height: $height-header;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: $z-index-header;
+
+  &__logo-btn {
+    padding: 0;
+  }
+
+  &__content {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    padding: 0 $spacing-l 0 $spacing-xl;
+  }
+
+  &__controls {
+    align-items: center;
+    display: flex;
+    gap: $spacing-4xs;
+  }
+}

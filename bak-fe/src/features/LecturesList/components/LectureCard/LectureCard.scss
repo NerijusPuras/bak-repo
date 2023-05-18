@@ -1,0 +1,74 @@
+@import "src/styles/index";
+
+$grid-template-columns-lecture: 1fr 5.7fr 26.7fr 3.75fr; //based on most narrow column - lecture number
+
+.lecture-card {
+  box-sizing: border-box;
+  display: grid;
+  gap: $spacing-xl;
+  grid-template-columns: $grid-template-columns-lecture;
+  padding: $spacing-s;
+  width: 100%;
+
+  &__number {
+    padding: $spacing-4xs;
+  }
+
+  &__image-container {
+    height: 8rem;
+  }
+
+  &__image {
+    border-radius: $border-radius-m;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-3xs;
+  }
+
+  &__title {
+    margin-right: 20%;
+  }
+
+  &__answers {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-3xs;
+    list-style-type: none;
+  }
+
+  &__answer {
+    align-items: center;
+    display: grid;
+    gap: $spacing-4xs;
+    grid-template-areas: "icon answer";
+    grid-template-columns: 2rem auto;
+  }
+
+  &__answer-icon {
+    color: $color-green-700;
+  }
+
+  &__answer-text {
+    grid-area: answer;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semi-bold;
+    gap: $spacing-xs;
+
+    > * {
+      align-items: center;
+      display: flex;
+      gap: $spacing-3xs;
+    }
+  }
+}

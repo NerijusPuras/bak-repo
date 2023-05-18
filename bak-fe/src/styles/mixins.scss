@@ -1,0 +1,102 @@
+@mixin quiz-text-area-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: $spacing-xs;
+  margin-top: -$spacing-3xs;
+  width: 100%;
+}
+
+@mixin slide-answer-cards-grid {
+  display: grid;
+  grid-gap: $spacing-4xl;
+  grid-template:
+    repeat(2, 1fr)
+    / repeat(2, 1fr);
+  margin-top: 5rem;
+  width: 100%;
+}
+
+@mixin slide-answer-cards-grid-two-cards-modifier {
+  grid-template-rows: 1fr;
+  margin: auto 0;
+}
+
+@mixin presenter-question-title-wrapper {
+  background: $color-white;
+  border: $border-default-s;
+  border-radius: $border-radius-l;
+  padding: $spacing-xs $spacing-xs;
+  text-align: center;
+}
+
+@mixin answer-variants {
+  &--circle {
+    background: $color-violet-300;
+    border-color: $color-violet-700;
+
+    &-correct {
+      background: $color-violet-700;
+      color: $color-black;
+    }
+  }
+
+  &--triangle {
+    background: $color-azure-300;
+    border-color: $color-azure-700;
+
+    &-correct {
+      background: $color-azure-700;
+      color: $color-black;
+    }
+  }
+
+  &--square {
+    background: $color-pink-300;
+    border-color: $color-pink-700;
+
+    &-correct {
+      background: $color-pink-700;
+      color: $color-black;
+    }
+  }
+
+  &--star {
+    background: $color-orange-300;
+    border-color: $color-orange-700;
+
+    &-correct {
+      background: $color-orange-700;
+      color: $color-black;
+    }
+  }
+}
+
+@mixin answer-result-icon {
+  height: 2.7rem;
+  width: 2.7rem;
+
+  &--correct {
+    color: $color-green-700;
+  }
+
+  &--incorrect {
+    color: $color-red-700;
+  }
+}
+
+@mixin container-participant-view-bottom-spacing {
+  margin-bottom: $spacing-s;
+}
+
+@mixin page-heading-and-actions {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: $spacing-xl 0;
+}
+
+@mixin page-actions {
+  display: flex;
+  gap: $spacing-xs;
+}

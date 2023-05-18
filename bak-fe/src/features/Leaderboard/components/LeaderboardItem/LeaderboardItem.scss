@@ -1,0 +1,55 @@
+@import "src/styles/index";
+
+.leaderboard-item {
+  align-items: center;
+  box-sizing: content-box;
+  display: flex;
+  height: 4rem;
+  justify-content: space-between;
+
+  &__content-left {
+    display: grid;
+    gap: $spacing-xl;
+    grid-template-columns: 2rem auto;
+    padding-left: $spacing-xs;
+  }
+
+  &__content-right {
+    display: flex;
+    gap: 5.8rem;
+  }
+
+  &__points {
+    align-items: center;
+    display: flex;
+    gap: $spacing-3xs;
+    width: 14.8rem;
+
+    &-icon {
+      height: $icon-sizing-m;
+      width: $icon-sizing-m;
+    }
+  }
+
+  &__user-cell {
+    // border: 1px solid $color-violet-700;
+    background-color: $color-violet-300;
+  }
+
+  &:not(:first-child) {
+    padding-bottom: $spacing-xs;
+    padding-top: $spacing-xs;
+  }
+
+  &:not(:last-child) {
+    border-bottom: $border-default-s;
+    padding-top: $spacing-xs;
+    padding-bottom: $spacing-xs;
+  }
+
+  &__correct-amount-icon {
+    color: $color-green-700;
+    height: $icon-sizing-s;
+    width: $icon-sizing-s;
+  }
+}

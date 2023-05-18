@@ -1,0 +1,40 @@
+@import "src/styles/index";
+
+.slide-question-view {
+  display: flex;
+  height: $height-page-with-toolbar-content;
+  justify-content: center;
+
+  &__content-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xl;
+    // justify-content: space-between;
+    padding-top: $spacing-4xl;
+    width: 80%;
+  }
+
+  &__title-wrapper {
+    @include presenter-question-title-wrapper;
+  }
+
+  &__answers-grid-wrapper {
+    display: flex;
+    justify-content: center;
+    min-height: 19.2rem;
+    width: 100%;
+  }
+
+  &__title {
+    text-align: center;
+  }
+
+  &__answer-cards-grid {
+    @include slide-answer-cards-grid;
+
+    &--two-cards {
+      @include slide-answer-cards-grid-two-cards-modifier;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+@import "src/styles/index";
+
+.lecture-detail-container {
+  align-items: center;
+  border: $border-default-s;
+  border-radius: $border-radius-m;
+  box-sizing: border-box;
+  display: flex;
+  gap: $spacing-xs;
+  height: 4rem;
+  padding: $spacing-3xs $spacing-s;
+
+  &__points-added {
+    background-color: $color-green-100-2;
+  }
+}

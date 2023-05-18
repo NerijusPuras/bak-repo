@@ -1,0 +1,95 @@
+@import "./fonts";
+@import "./colors";
+
+//font family
+$font-family-main: "Gellix Regular", sans-serif;
+$font-family-mono: "SF Mono Regular", sans;
+
+//font weight
+$font-weight-bold: 700;
+$font-weight-semi-bold: 600;
+$font-weight-medium: 500;
+$font-weight-regular: 400;
+
+//font-size
+$font-size-percentage: 62.5%;
+$font-size-3xs: 1.2rem;
+$font-size-2xs: 1.4rem;
+$font-size-xs: 1.6rem;
+$font-size-s: 1.8rem;
+$font-size-m: 2rem;
+$font-size-l: 2.4rem;
+$font-size-xl: 2.8rem;
+$font-size-2xl: 3.2rem;
+$font-size-3xl: 6.4rem;
+
+//line-height
+$line-height-3xs: 1.8rem;
+$line-height-2xs: 2rem;
+$line-height-xs: 2.4rem;
+$line-height-s: 2.8rem;
+$line-height-m: 3.2rem;
+$line-height-l: 3.6rem;
+$line-height-xl: 4rem;
+$line-height-2xl: 5.4rem;
+$line-height-3xl: 10rem;
+
+//spacing
+$spacing-4xs: 0.4rem;
+$spacing-3xs: 0.8rem;
+$spacing-2xs: 1rem;
+$spacing-xs: 1.2rem;
+$spacing-s: 1.6rem;
+$spacing-m: 1.8rem;
+$spacing-l: 2rem;
+$spacing-xl: 2.4rem;
+$spacing-2xl: 2.8rem;
+$spacing-3xl: 3.2rem;
+$spacing-4xl: 3.6rem;
+$spacing-5xl: 4.8rem;
+$spacing-6xl: 6.4rem;
+$spacing-8xl: 8.2rem;
+
+//max width
+$max-width-desktop-l: 1440px;
+$max-width-desktop: 1200px;
+
+//z-indexes
+$z-index-header: 100;
+$z-index-footer: 100;
+
+//border width
+$border-width-s: 0.1rem;
+$border-width-m: 0.2rem;
+
+//border radius
+$border-radius-xs: 0.2rem;
+$border-radius-s: 0.3rem;
+$border-radius-m: 0.4rem;
+$border-radius-l: 0.8rem;
+$border-radius-2xl: 1.6rem;
+$border-radius-3xl: 2rem;
+$border-radius-rounded: 100rem;
+
+//border
+$border-default-s: $border-width-s solid $color-gray-60;
+
+//other
+$height-mobile-header: 4.8rem;
+$height-mobile-footer: 4.8rem;
+$height-header: 6rem;
+$min-height-container: 60rem;
+$height-toolbar: 7.2rem;
+$height-page-with-toolbar-content: calc(
+  100vh - $height-header - $height-toolbar - $spacing-4xl
+);
+$height-mobile-game-page-content: calc(
+  var(--doc-height) - $height-mobile-footer - $height-mobile-header
+);
+$height-mobile-game-page-content-no-footer: calc(
+  var(--doc-height) - $height-mobile-header
+);
+
+// sizing
+$icon-sizing-s: 1.7rem;
+$icon-sizing-m: 3.2rem;

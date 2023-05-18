@@ -1,0 +1,15 @@
+@import "src/styles/index";
+
+.topic-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__heading-and-actions {
+    @include page-heading-and-actions;
+  }
+
+  &__actions {
+    @include page-actions;
+  }
+}
