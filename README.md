@@ -1,9 +1,13 @@
 Programos veikimo vaizdo įrašus galite pasiekti šiais adresais:
-	* https://youtu.be/1UycRCqfaYs - Temos, potemės, pamoka ir žinių patvirtinimas
-	* https://youtu.be/AF2xsmJAseE - Lyderių lentelės
+
+	 https://youtu.be/1UycRCqfaYs - Temos, potemės, pamoka ir žinių patvirtinimas
+	
+	 https://youtu.be/AF2xsmJAseE - Lyderių lentelės
 
 „Temos, potemės, pamoka ir žinių patvirtinimas" įraše pateikiami:
+
 	* temų, potemių langai
+	
 	* pamokos veikimas
 		- Pamokos metu parodoma:
 			+ informacijos skaidrė
