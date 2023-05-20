@@ -57,4 +57,9 @@ public class LectureRepository : ILectureRepository
     {
         return await _context.Lectures.FirstOrDefaultAsync(x => x.Id == lectureId);
     }
+
+    public async Task<int> GetContributionsCountForLecture(Guid lectureId)
+    {
+        return await _context.Contributions.Where(x => x.LectureId == lectureId).CountAsync();
+    }
 }

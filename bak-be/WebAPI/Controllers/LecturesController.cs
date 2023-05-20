@@ -113,4 +113,10 @@ public class LecturesController : ControllerBase
     {
         return await _slideService.SaveContributionForSlide(lectureId, slideId, contribution);
     }
+
+    [HttpGet("{lectureId}/contributionsCount")]
+    public async Task<int> GetContributionsCountForLecture([FromRoute] Guid lectureId)
+    {
+        return await _lectureService.GetContributionsCountForLecture(lectureId);
+    }
 }

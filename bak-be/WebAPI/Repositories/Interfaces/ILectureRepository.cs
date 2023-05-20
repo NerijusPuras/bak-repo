@@ -10,5 +10,6 @@ public interface ILectureRepository
     Task<List<LectureDto>> GetLectureDtos();
     Task<List<LectureDto>?> GetLectureDtosByTopicId(Guid topicId);
     Task<Lecture?> GetLectureById(Guid lectureId);
+    Task<int> GetContributionsCountForLecture(Guid lectureId);
 }
 

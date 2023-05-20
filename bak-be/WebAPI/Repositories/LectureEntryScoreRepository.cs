@@ -88,4 +88,6 @@ public class LectureEntryScoreRepository : ILectureEntryScoreRepository
             .Take(10).ToList();
         return scoresGroupedByNicknames;
     }
+
+
 }

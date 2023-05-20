@@ -24,11 +24,6 @@ public class ContributionValidationRepository : IContributionValidationRepositor
         var IsCorrectContributionValidationsCount = contributionValidations.Where(x => x.ValidationResult == ContributionValidationResult.Correct).Count();
         var IsIncorrectContributionValidationsCount = contributionValidations.Where(x => x.ValidationResult == ContributionValidationResult.Incorrect).Count();
 
-        var smth = (IsCorrectContributionValidationsCount * 100) / (contributionValidations.Count * 100);
-        var smth1 = (double)IsCorrectContributionValidationsCount / contributionValidations.Count;
-
-        var smth2 = (IsIncorrectContributionValidationsCount * 100) / (contributionValidations.Count * 100);
-
         if (contributionValidations.Count >= 3 
                 && (double)IsCorrectContributionValidationsCount / contributionValidations.Count > 0.66 
                 && (double)IsIncorrectContributionValidationsCount / contributionValidations.Count < 0.34)

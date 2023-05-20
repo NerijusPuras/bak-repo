@@ -37,4 +37,9 @@ public class LectureService : ILectureService
     {
         return await _lectureRepository.GetLectureById(lectureId);
     }
+
+    public async Task<int> GetContributionsCountForLecture(Guid lectureId)
+    {
+        return await _lectureRepository.GetContributionsCountForLecture(lectureId);
+    }
 }
