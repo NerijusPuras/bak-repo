@@ -21,3 +21,14 @@ Programos veikimo vaizdo įrašus galite pasiekti šiais adresais:
 
 „Lyderių lentelės" įraše pateikiamas bendra ir temų puslapyje esančios lyderių lentelės
 
+
+INSTRUKCIJOS PROGRAMOS PALEIDIMUI:
+
+Back-end dalis:
+
+Šios dalies kodas yra bak-be aplanke. Rekomenduojama naudoti Visual studio paleisti back-end dalį. Paleidimo metu yra sukuriama 'bakbe' duomenų bazė %localappdata% aplanke. Kaip pavyzdys, kur šį aplanką galima rasti: C:\Users\'naudotojo vardas'\AppData\Local
+Duomenų bazei peržiūrėti rekomenduojama naudoti SQLite programą
+
+Front-end dalis:
+
+Šios dalies kodas yra bak-fe aplanke. Paleisti šios dalies kodui galite naudoti command line: nuėję į bak-fe aplanko lokaciją command line, įveskite 'npm i' ir 'npm run start' komandas
