@@ -59,12 +59,6 @@ public class LecturesController : ControllerBase
         return await _lectureService.GetLectureById(lectureId);
     }
 
-    //[HttpGet("{topicId}")]
-    //public async Task<List<LectureDto>?> GetLectureDtosByTopicId([FromRoute] Guid topicId)
-    //{
-    //    return await _lectureService.GetLectureDtosByTopicId(topicId);
-    //}
-
     [HttpGet("{lectureId}/Slides")]
     public async Task<List<SlideDto>?> GetSlideDtosByLectureId([FromRoute] Guid lectureId)
     {

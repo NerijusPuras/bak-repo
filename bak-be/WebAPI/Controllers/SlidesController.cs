@@ -32,14 +32,6 @@ public class SlidesController : ControllerBase
         return Ok(slideId);
     }
 
-    //[HttpGet("{lectureId}")]
-    //public async Task<List<Slide>> GetSlidesByLectureId([FromRoute] Guid lectureId)
-    //{
-    //    return await _slideService.GetSlidesByLectureId(lectureId);
-    //}
-
-
-    /// TO DO sitoj vietoj
     [HttpGet("{slideId}/CorrectAnswer")]
     public async Task<Guid?> GetCorrectAnswerId([FromRoute] Guid slideId)
     {

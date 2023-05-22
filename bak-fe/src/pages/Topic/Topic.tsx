@@ -36,7 +36,6 @@ const Topic = () => {
                 <Button
                   onClick={handleLectureLeaderboardClick}
                   variant={ButtonVariant.secondaryFilled}
-                  // className="topics-page__overall-leaderboard-button"
                 >
                   Temos lyderių lentelė
                 </Button>

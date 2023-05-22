@@ -22,7 +22,6 @@ public class ContributionRepository : IContributionRepository
 
     public async Task<ContributionDto?> GetRandomContributionByLectureId(Guid lectureId)
     {
-        // TO DO padaryt random
         var contribution = await _context.Contributions.Where(
                 c => c.LectureId == lectureId 
                     && c.Status == ContributionStatus.InValidation 
@@ -38,9 +37,4 @@ public class ContributionRepository : IContributionRepository
         Id = contribution.Id,
         Text = contribution.Text,
     };
-
-    //public async Task<Topic?> GetTopicById(Guid topicId)
-    //{
-    //    return await _context.Topics.Include(t => t.Lectures).FirstOrDefaultAsync(x => x.Id == topicId);
-    //}
 }

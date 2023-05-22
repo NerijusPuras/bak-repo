@@ -44,7 +44,6 @@ public class Startup
             });
         });
         services.AddControllers();
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
 
@@ -64,23 +63,6 @@ public class Startup
         services.AddScoped<ILectureEntryScoreRepository, LectureEntryScoreRepository>();
         services.AddScoped<IContributionValidationRepository, ContributionValidationRepository>();
     }
-
-    //public void ConfigureContainer(ContainerBuilder b)
-    //{
-    //    b.Register(i => new LoggerInterceptor());
-    //    b.RegisterType<ItemService>()
-    //        .AsImplementedInterfaces()
-    //        .EnableInterfaceInterceptors()
-    //        .InterceptedBy(typeof(LoggerInterceptor));
-    //    b.RegisterType<AddressService>()
-    //        .AsImplementedInterfaces()
-    //        .EnableInterfaceInterceptors()
-    //        .InterceptedBy(typeof(LoggerInterceptor));
-    //    b.RegisterType<UserService>()
-    //        .AsImplementedInterfaces()
-    //        .EnableInterfaceInterceptors()
-    //        .InterceptedBy(typeof(LoggerInterceptor));
-    //}
 
     public void Configure(IApplicationBuilder app)
     {

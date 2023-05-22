@@ -4,7 +4,7 @@ export interface Topic {
   modified: Date;
   title: string;
   description: string;
-  lectures: Array<Lecture> // pakeisti
+  lectures: Array<Lecture>
 }
 
 export interface TopicDto {

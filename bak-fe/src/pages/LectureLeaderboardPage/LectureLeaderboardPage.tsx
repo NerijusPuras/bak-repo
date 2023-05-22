@@ -9,10 +9,6 @@ const LectureLeaderboardPage = () => {
   const { data: leaderboardScores, isLoading: isGetLeaderboardScoresLoading } =
     useGetLeaderboardListByTopicIdQuery(topicId!);
 
-  // return <p>NU</p>;
-
-  console.log("leaderboard page");
-
   return isGetLeaderboardScoresLoading ? (
     <Loader />
   ) : (

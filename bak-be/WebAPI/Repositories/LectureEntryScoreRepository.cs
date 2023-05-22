@@ -48,7 +48,6 @@ public class LectureEntryScoreRepository : ILectureEntryScoreRepository
                         g.Key == "Vardenis Pavardenis"
                             ? (int)lastEntry?.TotalScore
                             : g.Max(x => x.TotalScore),
-                    // grazina ne tokius zenklelius
                     HasKnowledgeSharingBadge = 
                         g.Key == "Vardenis Pavardenis" 
                             ? lastEntry?.HasKnowledgeSharingBadge ?? false 
@@ -84,7 +83,6 @@ public class LectureEntryScoreRepository : ILectureEntryScoreRepository
                 ExpertBadgeCount = g.Where(x => x.HasExpertBadge).Count(),
             })
             .OrderByDescending(x => x.TotalScore)
-            // todo ThenByDescending pagal tags
             .Take(10).ToList();
         return scoresGroupedByNicknames;
     }

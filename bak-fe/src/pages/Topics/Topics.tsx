@@ -7,10 +7,15 @@ import "./Topics.scss";
 import { ButtonVariant } from "components/Button/enums";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "router";
+import { useEffect } from "react";
 
 const Topics = () => {
   const { data: topicsList, isLoading } = useGetTopicListQuery();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate(ROUTES.topics);
+  }, [navigate]);
 
   const handleOverallLeaderboardClick = () => {
     navigate(`${ROUTES.leaderboard}`);

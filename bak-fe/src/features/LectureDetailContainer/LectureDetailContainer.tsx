@@ -4,7 +4,6 @@ import { LectureDetailContainerProps } from "./types";
 
 const LectureDetailContainer = ({
   children,
-  // className,
   icon,
   arePointsAdded,
 }: LectureDetailContainerProps) => {

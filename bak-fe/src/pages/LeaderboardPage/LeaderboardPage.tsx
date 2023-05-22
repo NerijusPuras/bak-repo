@@ -7,8 +7,6 @@ const LeaderboardPage = () => {
   const { data: leaderboardScores, isLoading: isGetLeaderboardScoresLoading } =
     useGetOverallLeaderboardListQuery();
 
-  console.log({ leaderboardScores });
-
   return isGetLeaderboardScoresLoading ? (
     <Loader />
   ) : (

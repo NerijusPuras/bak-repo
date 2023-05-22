@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import { useEffect, useState } from "react";
-import { SlideAnswered } from "utils/enums";
 import { getAnswerVariant } from "utils/utils";
 import AnswerButton from "./AnswerButton";
 import "./SlideQuestionView.scss";
@@ -13,8 +12,7 @@ const SlideQuestionView = ({
   onAnswerSelected,
   lectureTitle,
   shouldResetParams,
-}: // slideAnswered,
-SlideQuestionViewProps) => {
+}: SlideQuestionViewProps) => {
   const [response, setResponse] = useState<number>();
 
   const isSelectedAnswer = (index: number) => index === response;
@@ -45,7 +43,6 @@ SlideQuestionViewProps) => {
                 answers!.length === 2,
             })}
           >
-            {/* {getAnswerCards(answers!)} */}
             {answers?.map(({ text }, index) => (
               <AnswerButton
                 text={text}

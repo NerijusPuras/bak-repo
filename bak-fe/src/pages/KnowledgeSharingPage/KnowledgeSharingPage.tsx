@@ -4,6 +4,8 @@ import Button from "components/Button";
 import { ButtonVariant } from "components/Button/enums";
 import { usePostContributionMutation } from "services/slide/slide.service";
 import { useEffect, useState } from "react";
+import { useGetContributionsCountForLectureQuery } from "services/lecture/lecture.service";
+import Loader from "components/Loader";
 
 const KnowledgeSharingPage = ({
   lectureTitle,
@@ -12,9 +14,10 @@ const KnowledgeSharingPage = ({
   onKnowledgeSharingClose,
   onKnowledgeSharingSubmit,
   assignKnowledgeSharingBadge,
-}: // slideAnswered,
-KnowledgeSharingPageProps) => {
+}: KnowledgeSharingPageProps) => {
   const [postContribution] = usePostContributionMutation();
+  const { data: contributionsCount, isLoading } =
+    useGetContributionsCountForLectureQuery(lectureId);
   const [inputValue, setInputValue] = useState("");
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
 
@@ -36,7 +39,9 @@ KnowledgeSharingPageProps) => {
     setIsSubmitDisabled(false);
   }, [inputValue]);
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <div className="knowledge-sharing-page">
       <div className="knowledge-sharing-page__content-container">
         <div className="knowledge-sharing-page__title-wrapper">
@@ -47,7 +52,8 @@ KnowledgeSharingPageProps) => {
           dalintojo ženklelį!
         </h1>
         <h4 className="knowledge-sharing-page__title">
-          Jau X žmonės pasidalino savo žiniomis, pasidalink ir tu
+          Jau {contributionsCount} žmonės pasidalino savo žiniomis, pasidalink
+          ir tu
         </h4>
         <textarea
           className="knowledge-sharing-page__input"
