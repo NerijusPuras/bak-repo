@@ -27,9 +27,7 @@ import {
   setTotalSlides,
 } from "store/game/slices/lecture";
 import SlideQuestionView from "features/SlideQuestionView";
-import { SlideDto } from "utils/types";
 import { useLazyGetCorrectAnswerIdForSlideQuery } from "services/slide/slide.service";
-import { SlideAnswered } from "utils/enums";
 import { showToast } from "store/toast/slices/toast";
 import { TOAST_TYPES } from "utils/constants";
 import { ROUTES } from "router";
@@ -46,7 +44,6 @@ const Lecture = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [isStoreSet, setIsStoreSet] = useState(false);
-  const [slide, setSlide] = useState();
   const [isQuestionAnswered, setIsQuestionAnswered] = useState(false);
   const [arePointsAdded, setArePointsAdded] = useState(false);
   const [isContribution, setIsContribution] = useState(false);
@@ -60,7 +57,6 @@ const Lecture = () => {
   const [currentIndexToDisplay, setCurrentIndexToDisplay] = useState(1);
   const [isContinueButtonDisabled, setIsContinueButtonDisabled] =
     useState(false);
-  // callbackui naudojama
   const [selectedAnswerId, setSelectedAnswerId] = useState<string>();
   const { lectureId } = useParams();
   const { currentSlideIndex, totalSlides, points } =
@@ -78,8 +74,7 @@ const Lecture = () => {
     { data: leaderboardScores, isLoading: isGetLeaderboardScoresLoading },
   ] = useLazyGetLeaderboardScoresByLectureIdQuery();
 
-  const [getCorrectAnswerId, { data: correctAnswerId }] =
-    useLazyGetCorrectAnswerIdForSlideQuery();
+  const [getCorrectAnswerId] = useLazyGetCorrectAnswerIdForSlideQuery();
 
   const [getSlideById, { data }] =
     useLazyGetSlideDtoByLectureIdAndSlideIdQuery();
@@ -91,7 +86,6 @@ const Lecture = () => {
 
   const [postLectureEntryScore] = usePostLectureEntryScoreMutation();
   const [postContributionValidation] = usePostContributionValidationMutation();
-  // const [postContribution] = usePostContributionMutation();
 
   const defaultScoreForCorrectAnswer = 10;
   const totalSlidesCount = totalSlides && totalSlides / 2;
@@ -100,15 +94,13 @@ const Lecture = () => {
     ((currentSlideIndex! - 1) / totalSlides!) * 100;
   const progressPercentage = isLeaderboard
     ? 100
-    : isContribution && !isQuestionAnswered // pirma contribution skaidre
+    : isContribution && !isQuestionAnswered
     ? standartProgressProgressCalculation +
       (100 - standartProgressProgressCalculation) / 3
-    : isContribution && isQuestionAnswered // antra contribution skaidre
+    : isContribution && isQuestionAnswered
     ? standartProgressProgressCalculation +
       ((100 - standartProgressProgressCalculation) / 3) * 2
     : standartProgressProgressCalculation;
-
-  console.log({ progressPercentage });
 
   const getLeaderboard = async (knowledgeShared?: boolean) => {
     await saveLectureEntry(knowledgeShared);
@@ -123,7 +115,6 @@ const Lecture = () => {
     dispatch(setCurrentSlideIndex(1));
     dispatch(setPoints(0));
     setIsStoreSet(true);
-    console.log(currentSlideIndex);
     getSlideById([lectureId!, slideIds![0]]).then();
   }, [isGetSlideIdsLoading]);
 
@@ -134,11 +125,8 @@ const Lecture = () => {
     { text: "Netinka pagal temą", id: "3" },
   ];
 
-  console.log({ selectedAnswerId });
-  console.log({ currentSlideIndex });
   useEffect(() => {
     selectedAnswerId && setIsContinueButtonDisabled(false);
-    // isContribution && isQuestionAnswered && setIsContinueButtonDisabled(false);
   }, [selectedAnswerId]);
 
   useEffect(() => {
@@ -166,10 +154,6 @@ const Lecture = () => {
   ]);
 
   const saveLectureEntry = async (knowledgeShared?: boolean) => {
-    console.log("save'ina entry");
-    console.log({
-      hasKnowledgeSharingBadge: knowledgeShared ?? hasKnowledgeSharingBadge,
-    });
     await postLectureEntryScore({
       playerName: "Vardenis Pavardenis",
       totalScore: points!,
@@ -181,18 +165,10 @@ const Lecture = () => {
     });
   };
 
-  // useEffect(() => {
-  //   if (data?.isQuestion) {
-  //     setIsContinueButtonDisabled(true);
-  //   }
-  // }, [data]);
-
   const isQuestionAnsweredPhase = data?.isQuestion && !isQuestionAnswered;
 
   const handleNextSlide = async () => {
-    // leaderboard, click next
     if (isLeaderboard) {
-      console.log("1");
       await postLectureEntryScore({
         playerName: "Vardenis Pavardenis",
         totalScore: points!,
@@ -206,29 +182,19 @@ const Lecture = () => {
       return;
     }
 
-    // contribution, answered, click next
     if (isContribution && isQuestionAnswered) {
-      console.log("2");
-
-      // TODO pakeist, kad saugotu po knowledge sharinimo skaidres
-
       setIsContribution(false);
       setLectureGameFinished(true);
       setIsKnowledgeSharing(true);
-      // getLeaderboard();
       return;
     }
 
     if (isKnowledgeSharing) {
-      console.log("2.2");
       getLeaderboard();
       setIsKnowledgeSharing(false);
     }
 
-    // contribution, not answered, click next
     if (isContribution && !isQuestionAnswered) {
-      console.log("3");
-      // POST contribution ir pridet zenkleli
       await postContributionValidation({
         contributionId: contributionData!.id,
         validationResult: parseInt(selectedAnswerId!),
@@ -246,9 +212,7 @@ const Lecture = () => {
         })
       );
       return;
-      // question, not answered, click next
     } else if (isQuestionAnsweredPhase) {
-      console.log("4");
       setIsQuestionAnswered(true);
       getCorrectAnswerId(slideIds![currentSlideIndex! - 1]).then(({ data }) => {
         if (selectedAnswerId === data) {
@@ -277,58 +241,32 @@ const Lecture = () => {
       return;
     }
 
-    // paskutinis klausimas atsakytas, click next
     if (currentSlideIndex === totalSlides) {
-      console.log("5");
       if (
         points! / totalSlidesCount! === defaultScoreForCorrectAnswer &&
         !isContribution
       ) {
-        console.log("6");
         setArePointsAdded(false);
         setIsQuestionAnswered(false);
-        getContribution(lectureId!).then(({ data: contribution }) => {
-          console.log({ contribution });
-        });
+        getContribution(lectureId!).then(({ data: contribution }) => {});
         setIsContribution(true);
-        console.log("Iskviestas");
         setShouldResetParams(true);
-        console.log("Contribution klausimas");
-        // setShouldUnselectAnswer(true);
         return;
       }
 
-      // TO DO sutvarkyt po contribution puslapio leave state
-      // if (isLeaderboard && isQuestionAnswered) {
-      //   navigate(`${ROUTES.topics}`);
-      //   return;
-      // }
-
-      // contribution, atsakyta, click next
       if (!isLeaderboard && isQuestionAnswered) {
-        // console.log("7");
-        // console.log("turi dbr leader boarda rodyt");
-        // saveLectureEntry();
         setLectureGameFinished(true);
         setIsKnowledgeSharing(true);
-        // getLeaderboard();
         return;
       }
     }
 
-    // information slide, click next
-    console.log("8");
-    // klausimas atsakytas, click next i kita informacijos skaidre
     if (isQuestionAnswered) setCurrentIndexToDisplay(currentIndexToDisplay + 1);
     setArePointsAdded(false);
     setIsQuestionAnswered(false);
     getSlideById([lectureId!, slideIds![currentSlideIndex!]]);
     dispatch(setCurrentSlideIndex(currentSlideIndex! + 1));
-    console.log("indexai");
-    console.log(currentSlideIndex);
-    console.log(totalSlides);
     if (isContribution || currentSlideIndex === totalSlidesCount) return;
-    // setCurrentIndexToDisplay(currentIndexToDisplay + 1);
   };
 
   const handleOpenKnowledgeSharing = () => {
@@ -343,8 +281,6 @@ const Lecture = () => {
   };
 
   const handleSubmitKnowledgeSharing = async (knowledgeShared?: boolean) => {
-    // issiust, cia indexa paduot
-    // console.log(slideIds ? slideIds![currentSlideIndex! - 1] : "Nieko");
     setHasKnowledgeSharingBadge(true);
     if (lectureGameFinished) {
       getLeaderboard(knowledgeShared);
@@ -353,7 +289,6 @@ const Lecture = () => {
   };
 
   const assignKnowledgeSharingBadge = () => {
-    console.log("Priskiria sharing zenkleli");
     setHasKnowledgeSharingBadge(true);
   };
 
@@ -379,7 +314,6 @@ const Lecture = () => {
               variant={ButtonVariant.dangerTextWithIcon}
               icon={<ExitIcon />}
               onClick={handleExitModalOpen}
-              // testId="exit-quiz-button"
             >
               Išeiti
             </Button>
@@ -396,7 +330,10 @@ const Lecture = () => {
               {isContribution && (
                 <Tag variant={TagVariant.contribution}>
                   <PeopleIcon />
-                  <p className="paragraph1-bold">EKSPERTO KLAUSIMAS</p>
+                  <p className="paragraph1-bold">
+                    EKSPERTO KLAUSIMAS - Įvertink pateiktą informaciją ir gauk
+                    „Eksperto" ženklelį!
+                  </p>
                 </Tag>
               )}
             </>
@@ -423,80 +360,75 @@ const Lecture = () => {
           ) : null
         }
       />
-      {
-        /* contribution */ isContribution &&
+      {isContribution && lecture && contributionData != null ? (
+        <SlideQuestionView
+          answers={contributionAnswers}
+          text={`Ar ši informacija teisinga pamokai „${lecture.title}"? „${
+            contributionData!.text
+          }"`}
+          disbleAnswers={isQuestionAnswered}
+          onAnswerSelected={setSelectedAnswerId}
+          isContribution={isContribution}
+          lectureTitle={lecture.title}
+          shouldResetParams={shouldResetParams}
+        />
+      ) : !isLeaderboard &&
+        data?.isQuestion &&
         lecture &&
-        contributionData != null ? (
-          <SlideQuestionView
-            answers={contributionAnswers}
-            text={`Ar ši informacija teisinga temai "${lecture.title}"? "${
-              contributionData!.text
-            }"`}
-            disbleAnswers={isQuestionAnswered}
-            onAnswerSelected={setSelectedAnswerId}
-            isContribution={isContribution}
-            lectureTitle={lecture.title}
-            shouldResetParams={shouldResetParams}
-          />
-        ) : /* klausimas */ !isLeaderboard &&
-          data?.isQuestion &&
-          lecture &&
-          !isKnowledgeSharing ? (
-          <SlideQuestionView
-            answers={data?.answers}
-            text={data?.text}
-            disbleAnswers={isQuestionAnswered}
-            onAnswerSelected={setSelectedAnswerId}
-            lectureTitle={lecture.title}
-            shouldResetParams={shouldResetParams}
-          />
-        ) : /* leaderboardas */ isLeaderboard && leaderboardScores ? (
+        !isKnowledgeSharing ? (
+        <SlideQuestionView
+          answers={data?.answers}
+          text={data?.text}
+          disbleAnswers={isQuestionAnswered}
+          onAnswerSelected={setSelectedAnswerId}
+          lectureTitle={lecture.title}
+          shouldResetParams={shouldResetParams}
+        />
+      ) : isLeaderboard && leaderboardScores ? (
+        <div>
+          <h1 className="lecture-page__leaderboard-title">
+            Potemės lyderių lentelė
+          </h1>
+          <LeaderboardView leaderboard={leaderboardScores} />
+        </div>
+      ) : isKnowledgeSharing ? (
+        <KnowledgeSharingPage
+          lectureTitle={lecture!.title}
+          lectureId={lectureId!}
+          slideId={slideIds![currentSlideIndex! - 1]}
+          onKnowledgeSharingClose={handleCloseKnowledgeSharing}
+          onKnowledgeSharingSubmit={handleSubmitKnowledgeSharing}
+          assignKnowledgeSharingBadge={assignKnowledgeSharingBadge}
+        />
+      ) : (
+        <div className="lecture-page__content-container content-wrapper">
+          <div className="lecture-page__title-wrapper">
+            <h3>{lecture!.title}</h3>
+          </div>
           <div>
-            <h1 className="lecture-page__leaderboard-title">
-              Potemės lyderių lentelė
-            </h1>
-            <LeaderboardView leaderboard={leaderboardScores} />
+            {data?.text.split("\n").map((line, index) => (
+              <React.Fragment key={index}>
+                <p className="paragraph2-regular">{line}</p>
+                {index !== data?.text.split("\n").length - 1 && <br />}
+              </React.Fragment>
+            ))}
           </div>
-        ) : isKnowledgeSharing ? (
-          <KnowledgeSharingPage
-            lectureTitle={lecture!.title}
-            lectureId={lectureId!}
-            slideId={slideIds![currentSlideIndex! - 1]}
-            onKnowledgeSharingClose={handleCloseKnowledgeSharing}
-            onKnowledgeSharingSubmit={handleSubmitKnowledgeSharing}
-            assignKnowledgeSharingBadge={assignKnowledgeSharingBadge}
-          />
-        ) : (
-          /* lecture */ <div className="lecture-page__content-container content-wrapper">
-            <div className="lecture-page__title-wrapper">
-              <h3>{lecture!.title}</h3>
-            </div>
-            <div>
-              {data?.text.split("\n").map((line, index) => (
-                <React.Fragment key={index}>
-                  <p className="paragraph2-regular">{line}</p>
-                  {index !== data?.text.split("\n").length - 1 && <br />}
-                </React.Fragment>
-              ))}
-            </div>
-            <Button
-              className="lecture-page__knowledge-sharing-button"
-              variant={ButtonVariant.secondaryFilled}
-              onClick={handleOpenKnowledgeSharing}
-              // isDisabled={!isLeaderboard && isContinueButtonDisabled}
-            >
-              ŽINAI PAPILDOMAI INFORMACIJOS ŠIAM SKYRIUI? PASIDALINK PASPAUDĘS
-              ČIA!
-            </Button>
-          </div>
-        )
-      }
+          <Button
+            className="lecture-page__knowledge-sharing-button"
+            variant={ButtonVariant.secondaryFilled}
+            onClick={handleOpenKnowledgeSharing}
+          >
+            ŽINAI PAPILDOMAI INFORMACIJOS ŠIAM SKYRIUI? PASIDALINK PASPAUDĘS
+            ČIA!
+          </Button>
+        </div>
+      )}
       <div className="lecture-page__progress-bar">
         <ProgressBar percentage={progressPercentage} />
       </div>
     </Layout>
   ) : (
-    <div></div> // 404
+    <div></div>
   );
 };
 export default Lecture;

@@ -1,17 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
-// import PlayIcon from "assets/icons/play-icon";
 import Button from "components/Button";
 import { ButtonVariant } from "components/Button/enums";
-// import ImageThumbnailNoImg from "components/ImageThumbnailNoImg";
 import { ROUTES } from "router";
 import "./TopicCard.scss";
 import { ContentCardProps } from "./types";
-import { getRelativeDate } from "./utils";
 import PlayIcon from "assets/icons/play-icon";
 
 const TopicCard = ({ content, isLecture }: ContentCardProps) => {
   const navigate = useNavigate();
-  const relativeDate = getRelativeDate(content.modified);
   const handleStartLecture = () => {
     isLecture
       ? navigate(`${ROUTES.lectures}/${content.id}`)
@@ -58,8 +54,8 @@ const TopicCard = ({ content, isLecture }: ContentCardProps) => {
       <div className="content-card__details">
         <p className="paragraph2-regular">
           {isLecture
-            ? `${content.childrenCount} ${"potem."}`
-            : `${content.childrenCount} ${"skyr."}`}
+            ? `${content.childrenCount / 2} ${"skyr."}`
+            : `${content.childrenCount} ${"potem."}`}
         </p>
         <p className="paragraph2-regular">{`Atnaujinta ${returnProperDateTime(
           content.modified

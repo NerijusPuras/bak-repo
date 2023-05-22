@@ -35,6 +35,9 @@ export const lectureApiSlice = api.injectEndpoints({
         body: contributionValidation,
       }),
     }),
+    getContributionsCountForLecture: builder.query<number, string>({
+      query: (lectureId?: string) => `/lectures/${lectureId}/contributionsCount`,
+    }),
   }),
 });
 
@@ -47,4 +50,5 @@ export const {
   useLazyGetLeaderboardScoresByLectureIdQuery,
   usePostLectureEntryScoreMutation,
   usePostContributionValidationMutation,
+  useGetContributionsCountForLectureQuery,
 } = lectureApiSlice;

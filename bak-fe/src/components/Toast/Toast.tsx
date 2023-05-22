@@ -52,7 +52,7 @@ const Toast = () => {
                 {title}
               </p>
             )}
-            <p className="paragraph1-regular" data-testid="toast-message">
+            <p className="paragraph1-bold" data-testid="toast-message">
               {message}
             </p>
           </div>
