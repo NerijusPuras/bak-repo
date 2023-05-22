@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Autofac.Extensions.DependencyInjection;
 using WebAPI.Services.Interfaces;
 using WebAPI.Services;
-using SFKR.DataAccess;
 
 public class Startup
 {

@@ -1,5 +1,5 @@
 ﻿
-namespace SFKR.DataAccess;
+namespace WebAPI;
 
 using System;
 using System.Collections.Generic;

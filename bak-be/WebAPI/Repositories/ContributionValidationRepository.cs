@@ -3,7 +3,7 @@ using Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace SFKR.DataAccess;
+namespace WebAPI;
 
 public class ContributionValidationRepository : IContributionValidationRepository
 { 

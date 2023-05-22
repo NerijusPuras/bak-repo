@@ -10,7 +10,6 @@ using Autofac.Extras.DynamicProxy;
 using Microsoft.AspNetCore.Mvc;
 using Data;
 using Data.Models;
-using SFKR.DataAccess;
 using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;

@@ -24,6 +24,10 @@ public class BakbeContext : DbContext
         DbPath = Path.Join(path, "bakbe.db");
     }
 
+    public BakbeContext(DbContextOptions<BakbeContext> options) : base(options)
+    {
+    }
+
     protected override void OnConfiguring(DbContextOptionsBuilder options)
         => options.UseSqlite($"Data Source={DbPath}");
 }

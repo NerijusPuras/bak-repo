@@ -2,7 +2,6 @@
 
 using WebAPI.Services.Interfaces;
 using Data.Models;
-using SFKR.DataAccess;
 using System.Collections.Generic;
 
 public class LectureService : ILectureService
