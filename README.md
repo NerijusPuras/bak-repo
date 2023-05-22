@@ -26,7 +26,7 @@ INSTRUKCIJOS PROGRAMOS PALEIDIMUI:
 
 Back-end dalis:
 
-Šios dalies kodas yra bak-be aplanke. Rekomenduojama naudoti Visual studio paleisti back-end dalį. Paleidimo metu yra sukuriama 'bakbe' duomenų bazė %localappdata% aplanke. Kaip pavyzdys, kur šį aplanką galima rasti: C:\Users\'naudotojo vardas'\AppData\Local
+Šios dalies kodas yra bak-be aplanke. Rekomenduojama naudoti Visual studio paleisti back-end dalį. Paleidimo metu yra sukuriama 'bakbe' duomenų bazė %localappdata% aplanke. Kaip pavyzdys, kur šį aplanką galima rasti: C:\Users\naudotojo vardas\AppData\Local
 Duomenų bazei peržiūrėti rekomenduojama naudoti SQLite programą
 
 Front-end dalis:
